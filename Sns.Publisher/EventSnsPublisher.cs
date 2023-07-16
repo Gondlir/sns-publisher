@@ -1,14 +1,8 @@
 ﻿using Amazon;
-using Amazon.Runtime.Internal.Endpoints.StandardLibrary;
 using Amazon.SimpleNotificationService;
 using Amazon.SimpleNotificationService.Model;
 using Sns.Publisher.Contracts;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Text.Json;
-using System.Threading.Tasks;
 
 namespace Sns.Publisher
 {
@@ -40,7 +34,6 @@ namespace Sns.Publisher
                     Email = "batman@dc.com"
                 };
                 #endregion
-                var result = await _awsSnS.ListTopicsAsync(); 
                 var topicArn = await _awsSnS.FindTopicAsync(_topicTitle)!;
                 var publishRequest = new PublishRequest
                 {
@@ -61,7 +54,7 @@ namespace Sns.Publisher
             }
             catch (Exception ex)
             {
-
+                // treat errors 
                 throw;
             }
             
